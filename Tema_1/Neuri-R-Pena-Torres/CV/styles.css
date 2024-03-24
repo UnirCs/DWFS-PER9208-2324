@@ -90,11 +90,11 @@ main section{
 
 .education-subject{
     width: 70%;
-    float: left;
+    align-self: flex-start;
 }
 
 .education-period{
-    float: right;
+    align-self: flex-end;
     width: 30%;
     text-align: end;
     text-align: right;
@@ -114,11 +114,11 @@ main section{
 
 .job-subject{
     width: 70%;
-    float: left;
+    align-self: flex-start;
 }
 
 .job-period{
-    float: right;
+    align-self: flex-end;
     width: 30%;
     text-align: end;
     text-align: right;
