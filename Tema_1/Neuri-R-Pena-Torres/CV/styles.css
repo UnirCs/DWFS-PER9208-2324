@@ -8,7 +8,7 @@ main{
     margin: 16px auto;/*centrado horizontal*/
     width: 55%;
     border: 1px solid #aaaaaa;
-    display: flex;/*dividimos el contenido en 2 columnas*/
+    display: flex;/*para dividir el contenido en 2 sections*/
     box-shadow: 4px 4px 2px #dfe2e2;
     border-radius: 8px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -81,49 +81,27 @@ main section{
     min-height: 768px;
 }
 
-/*Estilos para la section de educacion*/
-.education{
+/*Estilos para la section de educacion y de experiencia o historico de trabajos*/
+.subject{
     margin-top: 16px;
     font-weight: bolder;
     display: flex;
 }
 
-.education-subject{
+.subject-name{
     width: 70%;
-    align-self: flex-start;
 }
 
-.education-period{
+.subject-period{
     align-self: flex-end;
     width: 30%;
-    text-align: end;
     text-align: right;
 }
 
-.institution{
+.entity-name{
     color: #37649e;
 }
 
-
-/*Estilos para la section de experiencia o historico de trabajos*/
-.job-history{
-    margin-top: 16px;
-    font-weight: bolder;
-    display: flex;
-}
-
-.job-subject{
-    width: 70%;
-    align-self: flex-start;
-}
-
-.job-period{
-    align-self: flex-end;
-    width: 30%;
-    text-align: end;
-    text-align: right;
-}
-
-.job-responsabilities{
+.job-items{
     padding: 16px;
 }
