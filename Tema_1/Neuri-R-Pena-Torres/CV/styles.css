@@ -27,8 +27,13 @@ main aside{
     background-color: #eff1f3;
     width: 30%;
     min-height: 768px;
-    display: flex;/*divifir el contenido en 2 columnas*/
+    display: flex;/*dividir el contenido en 2 columnas*/
 }
+
+.left-side{
+    padding: 16px;
+}
+
 
 /*Lazo azul lado izquierdo*/
 .left-ribbon{
@@ -79,6 +84,10 @@ main section{
     padding: 16px;
     width: 70%;
     min-height: 768px;
+}
+
+.profile{
+    margin-top: 16px;
 }
 
 /*Estilos para la section de educacion y de experiencia o historia de trabajos*/
