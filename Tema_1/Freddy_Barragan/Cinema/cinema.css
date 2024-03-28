@@ -46,14 +46,31 @@ body{
     color: #ffc107;
 }
 
+@keyframes outSeat {
+    0% {background-color: #ffc1078b;}
+    100% {background-color: transparent;}
+}
+
 .row__seat{
     border: 1px solid #ffc107;
     width: 40px;
     height: 40px;
 }
 
+@keyframes overSeat {
+    100% {background-color: #ffc1078b;}
+}
+
 .row__seat:hover{
-    background-color: #ffc1078b;
+    animation-name: overSeat;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.row__seat:not(:hover) {
+    animation-name: outSeat;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
 }
 
 .row__seat--reserved{
