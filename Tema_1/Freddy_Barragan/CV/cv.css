@@ -53,6 +53,18 @@ h1{
     background-color: #BF9288 !important;
 }
 
+.progress-bar__espanol{
+    width: 100%;
+}
+
+.progress-bar__english{
+    width: 75%;
+}
+
+.progress-bar__french{
+    width: 25%;
+}
+
 .cv__rightSection{
     background-color: #F2EADF;
     border-radius: 6rem;
