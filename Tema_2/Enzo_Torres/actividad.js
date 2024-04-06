@@ -4,35 +4,40 @@ const ImageHandler = require('./ImageHandler.js')
 let path = 'input/tucan.jpg';
 let handler = new ImageHandler(path);
 
+//console.log(path, handler);
 
+/*const numeros = [1, 2, 3, 4, 5];
+
+numeros.forEach((numero, index, arreglo) => {
+  console.log(arreglo);
+});*/
 /**
  * Ejemplo de construccion de una imagen
  */
-/*function ejemplo() {
+function ejemplo() {
 
   let outputPath = 'output/ejemplo.jpg';
   let pixeles = [];
-  let filas = 100;
-  let columnas = 100;
+  let filas = 2;
+  let columnas = 2;
   for (let i = 0; i < filas; i++) {
     let nuevaFila = [];
-    console.log("Fila: " + i);
+    //console.log("Fila: " + i);
     for (let j = 0; j < columnas; j++) {
-      console.log("Columna:" + j)
+      //console.log("Columna:" + j)
       let pixel = [0, 0, 0]; // R G B -> Red Green Blue -> Rojo Verde Azul
       if ((i + j) % 2 === 0) { // Si la suma de la fila y la columna es par....
         pixel = [255, 255, 255];
       }
-      console.log("Vamos a añadir el pixel " + pixel + " a la fila " + i + " columna " + j)
+      //console.log("Vamos a añadir el pixel " + pixel + " a la fila " + i + " columna " + j)
       nuevaFila.push(pixel);
     }
-    console.log(nuevaFila)
+    //console.log(nuevaFila)
     pixeles.push(nuevaFila);
   }
-  console.log(pixeles);
+  //console.log(pixeles);
   handler.savePixels(pixeles, outputPath, filas, columnas);
-}*/
-
+}
 /**
  * Esta función debe transformar una imagen en escala de rojos.
  *
@@ -43,8 +48,13 @@ function redConverter() {
   let pixels = handler.getPixels();
 
   //Aqui tu codigo
-    pixel = [255, 0, 0];
+  for (let i = 0; i < pixels.length; i++) {
+    for (let j = 0; j < pixels[i].length; j++) {
+      pixels[i][j][1] = 0;
+      pixels[i][j][2] = 0;
 
+    }
+  }
   handler.savePixels(pixels, outputPath);
 }
 
@@ -58,7 +68,13 @@ function greenConverter() {
   let pixels = handler.getPixels();
 
   //Aqui tu codigo
-  pixel = [0, 255, 0];
+  for (let i = 0; i < pixels.length; i++) {
+    for (let j = 0; j < pixels[i].length; j++) {
+      pixels[i][j][0] = 0;
+      pixels[i][j][2] = 0;
+
+    }
+  }
   handler.savePixels(pixels, outputPath);
 }
 
@@ -72,7 +88,13 @@ function blueConverter() {
   let pixels = handler.getPixels();
 
   //Aqui tu codigo
+  for (let i = 0; i < pixels.length; i++) {
+    for (let j = 0; j < pixels[i].length; j++) {
+      pixels[i][j][0] = 0;
+      pixels[i][j][1] = 0;
 
+    }
+  }
   handler.savePixels(pixels, outputPath);
 }
 
@@ -88,9 +110,20 @@ function blueConverter() {
 function greyConverter() {
   let outputPath = 'output/tucan_grey.jpg';
   let pixels = handler.getPixels();
+  
 
   //Aqui tu codigo
-
+  let matriz = [];
+  let media = 0;
+  for (let i = 0; i < pixels.length; i++) {
+    for (let j = 0; j < pixels[i].length; j++) {
+      let suma = pixels[i][j][0] + pixels[i][j][1] + pixels[i][j][2];
+      let media = (suma / 3);
+      pixels[i][j][0] = media;
+      pixels[i][j][1] = media;
+      pixels[i][j][2] = media;
+    }
+  }
   handler.savePixels(pixels, outputPath);
 }
 
@@ -106,7 +139,25 @@ function blackAndWhiteConverter() {
   let pixels = handler.getPixels();
 
   //Aqui tu codigo
-
+  let matriz = [];
+  let media = 0;
+  for (let i = 0; i < pixels.length; i++) {
+    for (let j = 0; j < pixels[i].length; j++) {
+      let suma = pixels[i][j][0] + pixels[i][j][1] + pixels[i][j][2];
+      let media = (suma / 3);
+      if (media < 128) {
+        //Negro
+        pixels[i][j][0] = 0;
+        pixels[i][j][1] = 0;
+        pixels[i][j][2] = 0;
+      } else {
+        //Blanco
+        pixels[i][j][0] = 255;
+        pixels[i][j][1] = 255;
+        pixels[i][j][2] = 255;
+      }
+    }
+  }
   handler.savePixels(pixels, outputPath);
 }
 
@@ -121,8 +172,21 @@ function scaleDown() {
   let pixels = handler.getPixels();
 
   //Aqui tu codigo
+  let nuvaImage = [];
+  for (let i = 0; i < pixels.length; i++) {
+    let imagen = [];
+    if (i % 2 === 0){
+      for (let j = 0; j < pixels[i].length; j++) {
+        if (j % 2 === 0){
+          imagen.push(pixels[i][j]);
+        }
+      }
+      nuvaImage.push(imagen);
+    }
+  }
 
-  handler.savePixels(pixels, outputPath, handler.getShape()[0] / 2, handler.getShape()[1] / 2);
+
+  handler.savePixels(nuvaImage, outputPath, handler.getShape()[0] / 2, handler.getShape()[1] / 2);
 }
 
 /**
@@ -135,7 +199,13 @@ function dimBrightness(dimFactor) {
   let pixels = handler.getPixels();
 
   //Aqui tu codigo
-
+  for (let i = 0; i < pixels.length; i++) {
+    for (let j = 0; j < pixels[i].length; j++) {
+      pixels[i][j][0] = pixels[i][j][0] / dimFactor ;
+      pixels[i][j][1] = pixels[i][j][1] / dimFactor;
+      pixels[i][j][2] = pixels[i][j][2] / dimFactor;
+    }
+  }
   handler.savePixels(pixels, outputPath);
 }
 
@@ -151,6 +221,13 @@ function invertColors() {
   let pixels = handler.getPixels();
 
   //Aqui tu codigo
+  for (let i = 0; i < pixels.length; i++) {
+    for (let j = 0; j < pixels[i].length; j++) {
+      pixels[i][j][0] = 255 - pixels[i][j][0] ;
+      pixels[i][j][1] = 255 - pixels[i][j][1];
+      pixels[i][j][2] = 255 - pixels[i][j][2];
+    }
+  }
 
   handler.savePixels(pixels, outputPath);
 }
@@ -172,7 +249,20 @@ function merge(alphaFirst, alphaSecond) {
   let pixels = [];
 
   //Aqui tu codigo
-
+  
+  for (let i = 0; i < catPixels.length; i++) {
+    let fila = [];
+    for (let j = 0; j < catPixels[i].length; j++) {
+      let pixPerro = dogPixels[i][j];
+      let pixGato = catPixels[i][j];
+      let nuePixel = [pixPerro[0] * alphaFirst + pixGato[0] * alphaSecond,
+                      pixPerro[1] * alphaFirst + pixGato[1] * alphaSecond,
+                      pixPerro[2] * alphaFirst + pixGato[2] * alphaSecond,
+                      ]
+            fila.push(nuePixel);
+    }
+    pixels.push(fila);
+  }
   dogHandler.savePixels(pixels, outputPath);
 }
 
@@ -195,7 +285,7 @@ function merge(alphaFirst, alphaSecond) {
  *     Negativo: 8
  *     Fusion de imagenes: 9
  */
-let optionN = 0;
+let optionN = 9;
 
 switch (optionN) {
   case 1: redConverter(); break;
@@ -204,7 +294,7 @@ switch (optionN) {
   case 4: greyConverter(); break;
   case 5: blackAndWhiteConverter(); break;
   case 6: scaleDown(); break;
-  case 7: dimBrightness(2); break;
+  case 7: dimBrightness(3); break;
   case 8: invertColors(); break;
   case 9: merge(0.3, 0.7); break;
   default: ejemplo();
