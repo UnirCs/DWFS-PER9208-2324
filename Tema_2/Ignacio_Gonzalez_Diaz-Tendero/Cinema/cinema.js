@@ -13,7 +13,7 @@ function setup() {
         for (let j = 0; j < N; j++) {
             // Nuevo asiento
             fila.push({
-                id: idContador++,
+                id: idContador++, 
                 estado: false // Estado inicial libre
             });
         }
