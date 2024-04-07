@@ -57,33 +57,5 @@ const suggest = (seatsMatrix, numberOfSeats) => {
   return [];
 };
 
-const main = () => {
-  const cinemaSize = 10;
-  const numberOfSeats = 3;
-  const seatsMatrix = setup(cinemaSize);
-
-  // initialize available seats
-  seatsMatrix[0][1].available = true;
-  seatsMatrix[0][2].available = true;
-  seatsMatrix[0][3].available = true;
-  seatsMatrix[6][5].available = true;
-  seatsMatrix[6][7].available = true;
-  seatsMatrix[6][8].available = true;
-  seatsMatrix[6][9].available = true;
-
-  const suggestion = suggest(seatsMatrix, numberOfSeats);
-
-  /**
-   ------------- OUTPUT -------------
-    {
-      suggestion: [
-        { id: 'D8', row: 7, col: 8, available: true },
-        { id: 'D9', row: 7, col: 9, available: true },
-        { id: 'D10', row: 7, col: 10, available: true }
-      ]
-    }
-   */
-  console.log({ suggestion });
-};
-
-main();
+window.suggest = suggest;
+window.getSeatCode = getSeatCode;
