@@ -46,6 +46,7 @@ const setup = (cinemaSize) => {
  * @returns {{id:string, row:int, col:int available:boolean}[]}
  */
 const suggest = (seatsMatrix, numberOfSeats) => {
+  if (numberOfSeats > seatsMatrix.length) return [];
   for (const row of seatsMatrix.slice().reverse()) {
     for (const i in row) {
       const subRow = row.slice(parseInt(i), parseInt(i) + numberOfSeats);
