@@ -53,9 +53,9 @@ const suggest = (seatsMatrix, numberOfSeats) => {
   for (const row of seatsMatrix.slice().reverse()) {
     for (const i in row) {
       const subRow = row.slice(parseInt(i), parseInt(i) + numberOfSeats);
-      if (subRow.length < numberOfSeats) continue;
+      const isCorrectLength = subRow.length < numberOfSeats;
       const isSubRowFree = subRow.every((seat) => seat.available);
-      if (isSubRowFree && !found.length) {
+      if (isCorrectLength && isSubRowFree && !found.length) {
         found = subRow;
       }
     }
