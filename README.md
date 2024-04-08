@@ -1,4 +1,4 @@
-PER 9208 - 2024/2025
+PER 9208 - 2023/2024
 ================
 
 Usaremos este repositorio para nuestro trabajo colaborativo a través del curso.
