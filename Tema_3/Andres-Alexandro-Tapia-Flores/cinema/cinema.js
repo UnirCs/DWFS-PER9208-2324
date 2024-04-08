@@ -47,14 +47,17 @@ const setup = (cinemaSize) => {
  */
 const suggest = (seatsMatrix, numberOfSeats) => {
   if (numberOfSeats > seatsMatrix.length) return [];
+
   for (const row of seatsMatrix.slice().reverse()) {
     for (const i in row) {
       const subRow = row.slice(parseInt(i), parseInt(i) + numberOfSeats);
-      const isSubRowFree = subRow.every((seat) => seat.available);
-      if (isSubRowFree) return subRow;
       if (subRow.length < numberOfSeats) break;
+      const isSubRowFree = subRow.every((seat) => seat.available);
+
+      if (isSubRowFree) return subRow;
     }
   }
+
   return [];
 };
 
