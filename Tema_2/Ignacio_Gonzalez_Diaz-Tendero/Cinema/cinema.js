@@ -13,7 +13,7 @@ function setup() {
         for (let j = 0; j < N; j++) {
             // Nuevo asiento
             fila.push({
-                id: idContador++, 
+                id: idContador++,
                 estado: false // Estado inicial libre
             });
         }
@@ -61,7 +61,7 @@ function fillSeatsInfinite(butacas) {
         output: process.stdout
     });
 
-    console.log('Puedes ingresar las posiciones de los asientos ocupados en el formato "fila,columna".');
+    console.log('Puedes ingresar las posiciones de los asientos ocupados de forma manual en el formato "fila,columna" o dejar que se rellenen al azar.');
     console.log('Ejemplo: Para marcar el asiento en la primera fila y primera columna, ingresa "1,1".');
     console.log('Cuando hayas terminado, escribe "fin" para continuar.');
 
@@ -91,19 +91,20 @@ function fillSeatsInfinite(butacas) {
 // Función para sugerir asientos
 function suggest(numAsientos, butacas) {
     const selectedSeats = new Set();
+    let stopLoop = false; // Variable de control para detener el bucle exterior
 
     // CASO 1:
     if (numAsientos > N) {
-        return selectedSeats; // Set vacío si el número de asientos solicitados excede el tamaño máximo de la fila
+        stopLoop = true; // Establecemos la variable de control para detener el bucle exterior
     }
 
     // Recorremos las filas desde la más lejana a la pantalla
-    for (let i = N - 1; i >= 0; i--) {
+    for (let i = N - 1; i >= 0 && !stopLoop; i--) {
         let availableSeats = 0; // Contador de asientos disponibles consecutivos
         let startIdx = -1; // Índice de inicio de asientos disponibles consecutivos
 
         // Recorremos los asientos de la fila actual
-        for (let j = 0; j < N; j++) {
+        for (let j = 0; j < N && !stopLoop; j++) {
             // Verificamos si el asiento está libre
             if (!butacas[i][j].estado) {
                 // Si no hay asientos disponibles consecutivos reiniciamos el contador
@@ -118,7 +119,7 @@ function suggest(numAsientos, butacas) {
                     for (let k = 0; k < numAsientos; k++) {
                         selectedSeats.add(butacas[i][startIdx + k].id);
                     }
-                    return selectedSeats; // Devolvemos los asientos seleccionados
+                    stopLoop = true; // Establecemos la variable de control para detener el bucle exterior
                 }
             } else {
                 // Reiniciamos el contador de asientos disponibles consecutivos
@@ -130,6 +131,7 @@ function suggest(numAsientos, butacas) {
     // Devolvemos un Set vacío si no se encuentran suficientes asientos disponibles juntos
     return selectedSeats;
 }
+
 
 // Función para solicitar el número de asientos y sugerirlos
 function suggestSeats(butacas) {
