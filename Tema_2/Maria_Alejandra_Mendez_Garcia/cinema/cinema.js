@@ -33,11 +33,13 @@ número de asientos solicitado, se elegirá siempre la más lejana a la pantalla
     let asientos_escogidos = new Set();
     let asientos_escogidos_comple = false;
     let contador = 0;
+    let asiento_ocupado=false
     if(num_asientos <= butacas.length)
     {
         for (let fila = butacas.length - 1; fila >= 0 && asientos_escogidos_comple === false; fila--)
         {
-            for (let columna = butacas.length - 1; columna >=0 && asientos_escogidos_comple === false; columna--)
+            asiento_ocupado=false;
+            for (let columna = butacas.length - 1; columna >=0 && asientos_escogidos_comple === false && asiento_ocupado === false; columna--)
             {
                 if (butacas[fila][columna].estado === false && contador < num_asientos)
                 {
@@ -50,7 +52,7 @@ número de asientos solicitado, se elegirá siempre la más lejana a la pantalla
                 } else {
                     asientos_escogidos.clear();
                     contador = 0;
-                    break;//Se le agrega el break para que cuando no existan el total de asientos requeridos en la fila, salte a la siguiente fila
+                    asiento_ocupado=true;
                 }
             }
         }
@@ -81,4 +83,4 @@ butacas[5][5].estado=true;
 //console.log(butacas);
 
 //Imprimir el resultado del metodo suggest
-console.log("Los asientos que se sugiere para seleccionar son:", suggest(6));
+console.log("Los asientos que se sugiere para seleccionar son:", suggest(10));
