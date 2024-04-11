@@ -85,3 +85,15 @@ body{
     text-align: justify;
     font-size: 15px;
 }
+.li_subtitulo{
+    color: black;
+    text-align: justify;
+    font-weight: bold;
+    font-size: 15px;
+}
+#subtitulo{
+    color: black;
+    text-align: justify;
+    font-weight: bold;
+    font-size: 15px;
+}
