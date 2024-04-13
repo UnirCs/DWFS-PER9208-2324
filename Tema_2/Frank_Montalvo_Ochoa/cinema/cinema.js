@@ -20,8 +20,7 @@ function suggest(butacas, numeroAsientos) {
         }
     }
 
-    return sugerencias;
-
+    return (contador < numeroAsientos) ? [] : sugerencias;
 }
 
 function reserve(butacas, reservas) {
@@ -72,7 +71,6 @@ let butacas = setup();
 
 //Butacas ocupadas
 // Fila 1
-butacas[0][0].estado = true;
 butacas[0][2].estado = true;
 butacas[0][3].estado = true;
 // Fila 2
@@ -90,24 +88,24 @@ butacas[3][4].estado = true;
 butacas[4][2].estado = true;
 
 const test1 = suggest(butacas, 6);
-console.assert(test1.length === 0, 'Si el número de asientos solicitados excede el tamaño máximo de la fila, la función debe devolver un set vacío.');
+console.assert(test1.length === 0, '1) Si el número de asientos solicitados excede el tamaño máximo de la fila, la función debe devolver un set vacío.');
 console.log(test1);
 
 const test2 = suggest(butacas, 3);
-console.assert(test2.length === 0, 'Si en ninguna fila hay suficientes asientos disponibles juntos , la función debe devolver un set vacío.');
+console.assert(test2.length === 0, '2) Si en ninguna fila hay suficientes asientos disponibles juntos , la función debe devolver un set vacío.');
 console.log(test2);
 
 print(butacas);
 
 const test3 = suggest(butacas, 1);
-console.assert(test3.length !== 0, 'Si existe una fila con suficientes asientos disponibles juntos, la función debe devolver un set no vacío con los ids de los asientos.');
+console.assert(test3.length !== 0, '3) Si existe una fila con suficientes asientos disponibles juntos, la función debe devolver un set no vacío con los ids de los asientos.');
 reserve(butacas, test3);
 console.log(test3);
 
 print(butacas);
 
 const test4 = suggest(butacas, 2);
-console.assert(test4.length !== 0, 'Si existe una fila con suficientes asientos disponibles juntos, la función debe devolver un set no vacío con los ids de los asientos.');
+console.assert(test4.length !== 0, '4) Si existe una fila con suficientes asientos disponibles juntos, la función debe devolver un set no vacío con los ids de los asientos.');
 reserve(butacas, test4);
 console.log(test4);
 
