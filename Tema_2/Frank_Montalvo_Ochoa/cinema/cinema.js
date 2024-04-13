@@ -6,21 +6,45 @@ function suggest(butacas, numeroAsientos) {
     }
 
     let sugerencias = [];
-    let contador = 0;
+    let filas = [];
     for (let i = N - 1; i >= 0; i--) {
-        for (let j = N - 1; j >= 0 && contador < numeroAsientos; j--) {
+        for (let j = N - 1; j >= 0 && sugerencias.length < numeroAsientos; j--) {
             const butaca = butacas[i][j];
             if (butaca.estado === false) {
-                contador++;
+                filas.push(i);
                 sugerencias.push(butaca.id);
-            } else {
-                contador = 0;
+
+                if (!mismaFila(filas)) {
+                    j = N;
+                    filas = [];
+                    sugerencias = [];
+                }
+            }
+            else {
+                filas = [];
                 sugerencias = [];
             }
+
         }
     }
 
-    return (contador < numeroAsientos) ? [] : sugerencias;
+    return (sugerencias.length < numeroAsientos) ? [] : sugerencias;
+}
+
+
+function mismaFila(fila) {
+    if (fila.length === 0) {
+        return true;
+    }
+
+    const primerElemento = fila[0];
+    for (let i = 1; i < fila.length; i++) {
+        if (fila[i] !== primerElemento) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 function reserve(butacas, reservas) {
@@ -83,7 +107,7 @@ butacas[2][2].estado = true;
 // Fila 4
 butacas[3][0].estado = true;
 butacas[3][1].estado = true;
-butacas[3][4].estado = true;
+butacas[3][3].estado = true;
 // Fila 5
 butacas[4][2].estado = true;
 
