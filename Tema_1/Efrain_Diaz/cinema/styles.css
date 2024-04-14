@@ -43,3 +43,14 @@
   text-align: right;
 }
 
+.footer {
+  background-color: #333; 
+  color: #beb6b6; 
+  padding: 10px 0; 
+  padding-left: 10px;
+}
+
+.footer p {
+  margin-bottom: 3px; 
+  font-size: small;
+}
