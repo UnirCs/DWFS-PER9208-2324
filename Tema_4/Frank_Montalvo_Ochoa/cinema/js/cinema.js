@@ -1,23 +1,34 @@
 const SEATS = document.getElementsByClassName('seats__seat');
-const COLUMNAS = 15;
-const FILAS = SEATS.length / COLUMNAS;
+const COLUMNS = 15;
+const ROWS = SEATS.length / COLUMNS;
+
+// Inicializar la matriz
+let butacas = [];
+
+const input = document.getElementById('txtInput');
+const btnReservation = document.querySelector('#btnReservation');
+
+document.addEventListener('DOMContentLoaded', () => {
+    butacas = setup();
+    preSelected();
+});
 
 function suggest(butacas, numeroAsientos) {
-    if (numeroAsientos > COLUMNAS) {
+    if (numeroAsientos > COLUMNS) {
         return [];
     }
 
     let asientos = [];
     let sugerencias = [];
-    for (let i = FILAS - 1; i >= 0; i--) {
-        for (let j = 0; j < COLUMNAS && sugerencias.length < numeroAsientos; j++) {
-            const butaca = butacas[i][j];
+    for (let row = ROWS - 1; row >= 0 && sugerencias.length < numeroAsientos; row--) {
+        for (let colunm = 0; colunm < COLUMNS && sugerencias.length < numeroAsientos; colunm++) {
+            const butaca = butacas[row][colunm];
             if (butaca.estado === false) {
-                asientos.push(i);
+                asientos.push(row);
                 sugerencias.push(butaca.id);
 
                 if (!sameRow(asientos)) {
-                    j = -1;
+                    colunm = -1;
                     asientos = [];
                     sugerencias = [];
                 }
@@ -49,13 +60,15 @@ function sameRow(asientos) {
     return true;
 }
 
-function reserveSeat(butacas, reservas, reserve = false) {
-    for (let row = 0; row < FILAS; row++) {
-        for (let column = 0; column < COLUMNAS; column++) {
-            for (let k = 0; k < reservas.length; k++) {
-                if (butacas[row][column].id === reservas[k]) {
-                    const seat = SEATS[row * COLUMNAS + column];
-                    if (reserve) {
+function reserveSeat(butacas, reservas, reservar = false) {
+    let asientosReservados = 0; // Contador de asientos reservados, para evitar recorrer la matriz de butacas innecesariamente
+    for (let row = ROWS - 1; row >= 0 && asientosReservados < reservas.length; row--) {
+        for (let column = 0; column < COLUMNS && asientosReservados < reservas.length; column++) {
+            reservas
+                .filter(asiento => butacas[row][column].id === asiento)
+                .forEach(asiento => {
+                    const seat = document.getElementById(asiento);
+                    if (reservar) {
                         butacas[row][column].estado = true;
                         seat.classList.remove('--selected');
                         seat.classList.add('--reserved');
@@ -63,34 +76,35 @@ function reserveSeat(butacas, reservas, reserve = false) {
                     else {
                         seat.classList.add('--selected');
                     }
-                }
-            }
+                    asientosReservados++;
+                });
         }
     }
 }
 
 function print(butacas) {
-    for (let i = 0; i < FILAS; i++) {
-        let fila = '';
-        for (let j = 0; j < COLUMNAS; j++) {
-            const butaca = butacas[i][j];
-            fila += butaca.estado ? ` [${butaca.id < 10 ? `0${butaca.id}` : butaca.id}:X] ` : ` [${butaca.id < 10 ? `0${butaca.id}` : butaca.id}:-] `;
-        }
-        console.log(fila);
-    }
+    butacas.forEach((fila) => {
+        let linea = '';
+        fila.forEach((butaca) => {
+            linea += ` [${butaca.id < 10 ? `0${butaca.id}` : butaca.id}:${butaca.estado ? 'X' : '-'}] `;
+        });
+        console.log(linea);
+    });
+
 }
 
 function reset(butacas) {
-    for (let row = 0; row < FILAS; row++) {
-        // Nueva fila
-        let fila = [];
-        for (let column = 0; column < COLUMNAS; column++) {
-            const seat = SEATS[row * COLUMNAS + column];
-            if (!butacas[row][column].estado && seat.classList.contains('--selected')) {
-                seat.classList.remove('--selected');
-            }
-        }
-    }
+    butacas.forEach((filas) =>
+        filas
+            .filter(butaca => !butaca.estado)
+            .forEach((butaca) => {
+                const seat = document.getElementById(butaca.id);
+                if (seat.classList.contains('--selected')) {
+                    seat.classList.remove('--selected');
+                }
+            })
+    );
+
 }
 
 // Función para inicializar la matriz de butacas
@@ -98,20 +112,21 @@ function setup() {
     let idContador = 1; // Iniciar el contador de IDs en 1 (los humanos no empezamos a contar desde 0)
     let butacas = [];
 
-    for (let row = 0; row < FILAS; row++) {
+    for (let row = 0; row < ROWS; row++) {
         // Nueva fila
         let fila = [];
-        for (let column = 0; column < COLUMNAS; column++) {
+        for (let column = 0; column < COLUMNS; column++, idContador++) {
             // Nuevo asiento
             fila.push({
                 id: idContador,
                 estado: false // Estado inicial libre
             });
 
-            const seat = SEATS[row * COLUMNAS + column];
-            seat.innerHTML = idContador;
+            // Obtener el asiento actual
+            const seat = SEATS[row * COLUMNS + column];
 
-            idContador++;
+            seat.id = idContador;
+            seat.textContent = idContador;
 
         }
         butacas.push(fila);
@@ -120,26 +135,20 @@ function setup() {
     return butacas;
 }
 
-// Inicializar la matriz
-let butacas = setup();
-
-const input = document.getElementById('txtInput');
-
-input.addEventListener('input', () => {
+const preSelected = () => {
     reset(butacas);
     const asientos = Number(input.value);
     const sugerencias = suggest(butacas, asientos);
     console.info(sugerencias);
     reserveSeat(butacas, sugerencias);
-    print(butacas);
-});
+};
 
-const btnReservation = document.querySelector('#btnReservation');
+input.addEventListener('input', preSelected);
 
 btnReservation.addEventListener('click', () => {
     const asientos = Number(input.value);
     const sugerencias = suggest(butacas, asientos);
-    console.info(sugerencias);
     reserveSeat(butacas, sugerencias, true);
     print(butacas);
+    preSelected();
 });
