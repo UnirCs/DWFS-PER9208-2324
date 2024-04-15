@@ -148,6 +148,10 @@ input.addEventListener('input', preSelected);
 btnReservation.addEventListener('click', () => {
     const asientos = Number(input.value);
     const sugerencias = suggest(butacas, asientos);
+    if (sugerencias.length === 0) {
+        alert('No hay suficientes asientos disponibles');
+        return;
+    }
     reserveSeat(butacas, sugerencias, true);
     print(butacas);
     preSelected();
