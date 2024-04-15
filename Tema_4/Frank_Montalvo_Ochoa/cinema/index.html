@@ -1,140 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>UNIR Cinema - Registro</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </head>
+    <body>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Cinema</title>
-</head>
+        <div class="container">
+            <h3>Registro de Usuario</h3>
+            <form id="userForm">
+                <div class="input-field">
+                    <input id="fullName" type="text" name="fullName" class="validate" required>
+                    <label for="fullName">Nombre y apellidos</label>
+                </div>
 
-<body>
-    <main>
-        <header class="header">
-            <h1 class="header__title">CINEMA - UNIR</h1>
-        </header>
+                <div class="input-field">
+                    <input id="username" type="text" name="username" class="validate" required>
+                    <label for="username">Nombre de usuario</label>
+                </div>
 
-        <section class="screen"></section>
+                <div class="input-field">
+                    <input id="password" type="password" name="password" class="validate" required>
+                    <label for="password">Contraseña</label>
+                </div>
 
-        <section class="seats">
-            <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>A</th>
-                        <th>B</th>
-                        <th>C</th>
-                        <th>D</th>
-                        <th>E</th>
-                        <th>F</th>
-                        <th>G</th>
-                        <th>H</th>
-                        <th>I</th>
-                        <th>J</th>
-                        <th>K</th>
-                        <th>L</th>
-                        <th>M</th>
-                        <th>N</th>
-                        <th>O</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>1</th>
-                        <td class="seats__seat" data-row="1" data-column="A"></td>
-                        <td class="seats__seat" data-row="1" data-column="B"></td>
-                        <td class="seats__seat" data-row="1" data-column="C"></td>
-                        <td class="seats__seat" data-row="1" data-column="D"></td>
-                        <td class="seats__seat" data-row="1" data-column="E"></td>
-                        <td class="seats__seat" data-row="1" data-column="F"></td>
-                        <td class="seats__seat" data-row="1" data-column="G"></td>
-                        <td class="seats__seat" data-row="1" data-column="H"></td>
-                        <td class="seats__seat" data-row="1" data-column="I"></td>
-                        <td class="seats__seat" data-row="1" data-column="J"></td>
-                        <td class="seats__seat" data-row="1" data-column="K"></td>
-                        <td class="seats__seat" data-row="1" data-column="L"></td>
-                        <td class="seats__seat" data-row="1" data-column="M"></td>
-                        <td class="seats__seat" data-row="1" data-column="N"></td>
-                        <td class="seats__seat" data-row="1" data-column="O"></td>
-                    </tr>
+                <div class="input-field">
+                    <input id="confirmPassword" type="password" name="confirmPassword" class="validate" required>
+                    <label for="confirmPassword">Confirmar contraseña</label>
+                </div>
 
-                    <tr>
-                    <tr>
-                        <th>2</th>
-                        <td class="seats__seat" data-row="2" data-column="A"></td>
-                        <td class="seats__seat" data-row="2" data-column="B"></td>
-                        <td class="seats__seat" data-row="2" data-column="C"></td>
-                        <td class="seats__seat" data-row="2" data-column="D"></td>
-                        <td class="seats__seat" data-row="2" data-column="E"></td>
-                        <td class="seats__seat" data-row="2" data-column="F"></td>
-                        <td class="seats__seat" data-row="2" data-column="G"></td>
-                        <td class="seats__seat" data-row="2" data-column="H"></td>
-                        <td class="seats__seat" data-row="2" data-column="I"></td>
-                        <td class="seats__seat" data-row="2" data-column="J"></td>
-                        <td class="seats__seat" data-row="2" data-column="K"></td>
-                        <td class="seats__seat" data-row="2" data-column="L"></td>
-                        <td class="seats__seat" data-row="2" data-column="M"></td>
-                        <td class="seats__seat" data-row="2" data-column="N"></td>
-                        <td class="seats__seat" data-row="2" data-column="O"></td>
-                    </tr>
+                <div class="input-field">
+                    <input id="email" type="email" name="email" class="validate" required>
+                    <label for="email">Email</label>
+                </div>
 
-                    <th>3</th>
-                    <td class="seats__seat" data-row="3" data-column="A"></td>
-                    <td class="seats__seat" data-row="3" data-column="B"></td>
-                    <td class="seats__seat" data-row="3" data-column="C"></td>
-                    <td class="seats__seat" data-row="3" data-column="D"></td>
-                    <td class="seats__seat" data-row="3" data-column="E"></td>
-                    <td class="seats__seat" data-row="3" data-column="F"></td>
-                    <td class="seats__seat" data-row="3" data-column="G"></td>
-                    <td class="seats__seat" data-row="3" data-column="H"></td>
-                    <td class="seats__seat" data-row="3" data-column="I"></td>
-                    <td class="seats__seat" data-row="3" data-column="J"></td>
-                    <td class="seats__seat" data-row="3" data-column="K"></td>
-                    <td class="seats__seat" data-row="3" data-column="L"></td>
-                    <td class="seats__seat" data-row="3" data-column="M"></td>
-                    <td class="seats__seat" data-row="3" data-column="N"></td>
-                    <td class="seats__seat" data-row="3" data-column="O"></td>
-                    </tr>
-
-                    <tr>
-                        <th>4</th>
-                        <td class="seats__seat" data-row="4" data-column="A"></td>
-                        <td class="seats__seat" data-row="4" data-column="B"></td>
-                        <td class="seats__seat" data-row="4" data-column="C"></td>
-                        <td class="seats__seat" data-row="4" data-column="D"></td>
-                        <td class="seats__seat" data-row="4" data-column="E"></td>
-                        <td class="seats__seat" data-row="4" data-column="F"></td>
-                        <td class="seats__seat" data-row="4" data-column="G"></td>
-                        <td class="seats__seat" data-row="4" data-column="H"></td>
-                        <td class="seats__seat" data-row="4" data-column="I"></td>
-                        <td class="seats__seat" data-row="4" data-column="J"></td>
-                        <td class="seats__seat" data-row="4" data-column="K"></td>
-                        <td class="seats__seat" data-row="4" data-column="L"></td>
-                        <td class="seats__seat" data-row="4" data-column="M"></td>
-                        <td class="seats__seat" data-row="4" data-column="N"></td>
-                        <td class="seats__seat" data-row="4" data-column="O"></td>
-                    </tr>
-
-                </tbody>
-            </table>
-        </section>
-        <section class="reservation">
-            <label class="reservation__label" for="txtInput">Reservar asiento:</label>
-            <input id="txtInput" class="reservation__input" type="number" placeholder="Número de asientos">
-            <button id="btnReservation" class="reservation__btn">Reservar</button>
-        </section>
-
-        <footer class="footer">
-            <p class="footer__text">© 2024 Todos los derechos reservados</p>
-            <p class="footer__text">Frank Montalvo Ochoa</p>
-        </footer>
-
-    </main>
-
-    <!-- <script src="js/index.js"></script> -->
-    <script src="js/cinema.js"></script>
-
-</body>
-
+                <button type="submit" class="btn waves-effect waves-light">
+                    Registrar
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>
+        <script src="js/script.js"></script>
+    </body>
 </html>
