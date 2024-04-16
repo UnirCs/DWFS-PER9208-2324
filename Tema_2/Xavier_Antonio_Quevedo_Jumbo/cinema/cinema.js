@@ -78,4 +78,4 @@ function suggest(numSeats) {
   }
   
   const suggestedSeats = suggest(4);
-  console.log(suggestedSeats); // Output: Set { 1, 2 }
+  console.log(suggestedSeats); 
