@@ -33,9 +33,6 @@ const suggest = (numSeats) => {
         if (!seat.estado) {
           consecutiveSeats++;
           numberofSeats.add(seat.id);
-          if (consecutiveSeats === numSeats) {
-            return numberofSeats;
-          }
         } else {
           consecutiveSeats = 0;
           numberofSeats.clear();
@@ -49,8 +46,8 @@ const suggest = (numSeats) => {
 // Inicializar la matriz
 let butacas = setup();
 
-butacas[3][0].estado = false;
-butacas[3][1].estado = false;
+butacas[3][0].estado = true;
+butacas[3][1].estado = true;
 butacas[3][2].estado = false;
 butacas[3][3].estado = true;
 // Imprimir la matriz
@@ -58,4 +55,4 @@ console.log(butacas);
 
 
 
-console.log(suggest(5));
+console.log(suggest(3));
