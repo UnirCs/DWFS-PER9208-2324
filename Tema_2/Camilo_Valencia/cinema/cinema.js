@@ -28,7 +28,7 @@ const suggest = (numSeats) => {
     const rows = butacas.slice().reverse();
     for (let i = 0; i < rows.length && numberofSeats.size < numSeats; i++) {
       const row = rows[i];
-      for (let j = 0; j < row.length && numberofSeats.size < numSeats; j++) {
+      for (let j = 0;  j < row.length && numberofSeats.size < numSeats && j <= consecutiveSeats; j++) {
         const seat = row[j];
         if (!seat.estado) {
           consecutiveSeats++;
@@ -49,7 +49,13 @@ const suggest = (numSeats) => {
 // Inicializar la matriz
 let butacas = setup();
 
+butacas[3][0].estado = false;
+butacas[3][1].estado = false;
+butacas[3][2].estado = false;
+butacas[3][3].estado = true;
 // Imprimir la matriz
 console.log(butacas);
 
-console.log(suggest(3));
+
+
+console.log(suggest(5));
