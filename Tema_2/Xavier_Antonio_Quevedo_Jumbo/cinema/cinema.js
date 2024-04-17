@@ -23,6 +23,7 @@ function setup() {
 
 // Inicializar la matriz
 let butacas = setup();
+
 butacas[0][0].estado = true;
 butacas[0][1].estado = true;
 butacas[0][2].estado = true;
@@ -42,40 +43,31 @@ butacas[7][0].estado = false;
 butacas[8][7].estado = false;
 
 // Imprimir la matriz
-console.log(butacas);
+//console.log(butacas);
 
-function suggest(numSeats) {
-    const suggestedSeats = new Set();
-  
-    const numRows = butacas.length;
-    const numCols = butacas[0].length;
-  
-    for (let i = numRows - 1; i >= 0; i--) {
-      const row = butacas[i];
+
+const suggest = (numSeats) => {
+    const numberofSeats = new Set();
+    if (numSeats <= N) {
       let consecutiveSeats = 0;
-      let startSeatIndex = -1;
-  
-      for (let j = 0; j < numCols; j++) {
-        if (!row[j].estado) {
-          if (consecutiveSeats === 0) {
-            startSeatIndex = j;
+      const rows = butacas.slice().reverse();
+      for (let i = 0; i < rows.length && numberofSeats.size < numSeats; i++) {
+        const row = rows[i];
+        for (let j = 0;  j < row.length && numberofSeats.size < numSeats && j <= consecutiveSeats; j++) {
+          const seat = row[j];
+          if (!seat.estado) {
+            consecutiveSeats++;
+            numberofSeats.add(seat.id);
+          } else {
+            consecutiveSeats = 0;
+            numberofSeats.clear();
           }
-          consecutiveSeats++;
-          if (consecutiveSeats === numSeats) {
-            for (let k = startSeatIndex; k < startSeatIndex + numSeats; k++) {
-              suggestedSeats.add(row[k].id);
-            }
-            return suggestedSeats;
-          }
-        } else {
-          consecutiveSeats = 0;
-          startSeatIndex = -1;
         }
       }
     }
+    return numberofSeats;
+  };
   
-    return suggestedSeats;
-  }
   
   const suggestedSeats = suggest(4);
-  console.log(suggestedSeats); 
+  console.log(suggestedSeats);
