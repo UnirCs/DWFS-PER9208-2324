@@ -1,0 +1,116 @@
+
+body{
+    background: #222121;
+    color: #fff;
+   
+}
+.container
+{
+    border: 1px solid #d4e63a; 
+    padding: 20px;
+}
+.col-lg-12{
+    margin-bottom: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.puesto
+{
+    & div
+    {
+        width: 30px;
+        height: 30px;
+        border: 2px solid #d4e63a;
+        font-size: 10px;
+        &:hover{
+            background: #85885d;
+            
+        }
+    }
+    .no_disponible
+    {
+        background: rgb(253, 238, 23);
+        color: #222121;
+        
+    }
+    .preselección{
+        background: rgb(100, 100, 100);
+    }
+   
+}
+
+.portada
+{
+    display: flex;
+    background: #444447;   
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+
+   
+}
+.estrenos_peliculas
+{
+    background: #363535;   
+   
+    height: auto; 
+ 
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+   
+    & div{
+       height: 200px;
+       width: 150px;
+       margin: 10px;
+       background: #85885d; 
+    }
+}
+table
+{
+    width: 50%;
+}
+.contenedor__sal__cine
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+input[type='number']
+{
+    width: 50px;
+}
+.contenedor__formulario
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & form
+    {
+        & .form-group 
+        {
+            text-align: center;
+            & input{
+                margin: 0 auto;
+            }
+           
+        }
+    }
+   
+}
+.btn-reserva
+{
+    background: #d4e63a;
+    color: #222121;
+}
+.footer
+{
+    background: #4b4b4d;
+    height: 200px;
+    margin-bottom: 0px;
+    text-align: center;
+
+    & h6{
+        margin: 15px 0px 10px 0px;
+    }
+}
