@@ -24,21 +24,20 @@ function setup() {
 /**
  * Funcion para imprimir los asientos reservados
  */
-function asientosReservados(butacas){
+function asientosReservados(butacas) {
     console.log("#############################################");
     let cont = 0;
     for (let i = 0; i < butacas.length; i++) {
         for (let j = 0; j < butacas[i].length; j++) {
-            
-            if (butacas[i][j].estado === true) 
-            {
-                console.log("Fila:", i, "Columna:", j,"Estado:",  butacas[i][j].estado, "ID:", butacas[i][j].id);
-                cont++;            
+
+            if (butacas[i][j].estado === true) {
+                console.log("Fila:", i+1, "Columna:", j+1, "Estado:", butacas[i][j].estado, "ID:", butacas[i][j].id);
+                cont++;
             }
         }
     }
 
-    console.log("Puestos Reservados:",cont);
+    console.log("Puestos Reservados:", cont);
 }
 
 function suggest(butacas, cantPorReservar) {
@@ -48,31 +47,70 @@ function suggest(butacas, cantPorReservar) {
 
     if (cantPorReservar > N) {
         return [];
-    } 
+    }
 
-    for (let i=N-1; i>=0;i--){
+/*
+    for (let i = N - 1; i >= 0; i--) {
         let cont = 0;
-        puestoSugerido=[];
-        for (let j=0; j<butacas[i].length; j++) {
+        puestoSugerido = [];
+        for (let j = 0; j < butacas[i].length; j++) {
             if (!butacas[i][j].estado) {
                 cont++;
-                puestoSugerido.push({fila: i, columna: j,id:butacas[i][j].id});
+                puestoSugerido.push({ fila: i, columna: j, id: butacas[i][j].id });
             } else {
-                cont = 0; 
-                puestoSugerido=[];
+                cont = 0;
+                puestoSugerido = [];
             }
             if (cont === cantPorReservar) {
                 sugeridos.push(...puestoSugerido); // Copia los datos de la matriz de sugerencia
                 return sugeridos;
-            }  
+            }
         }
     }
+*/
+
+    let i = N - 1;
+    let j = 0;
+    let k = 0;
+
+    while (i >= 0) {
+        let cont = 0;
+        puestoSugerido = [];
+        while (j < butacas[i].length ) {
+
+            if (!butacas[i][j].estado) {
+                cont++;
+                puestoSugerido.push({ fila: i, columna: j, id: butacas[i][j].id });
+            } else {
+                cont = 0;
+                puestoSugerido = [];
+            }
+            if (cont === cantPorReservar) {
+                sugeridos.push(...puestoSugerido); // Copia los datos de la matriz de sugerencia
+                k=1;
+            }
+            j++;
+
+            if(k===1)
+            {
+                j = butacas[i].length+1
+                
+            }
+        }
+        i--;
+        j=0;
+        if(k===1)
+        {
+            i=-1;
+        }
+    }
+
     return sugeridos;
 }
 
 function actualizarButacas(butacas, puestoSugerido) {
     puestoSugerido.forEach(item => {
-    butacas[item.fila][item.columna].estado = true;
+        butacas[item.fila][item.columna].estado = true;
     });
 }
 
@@ -94,7 +132,7 @@ console.log(butacas);
 
 asientosReservados(butacas)
 
-let butacasReservados=suggest(butacas, 5) 
+let butacasReservados = suggest(butacas, 5)
 
 actualizarButacas(butacas, butacasReservados)
 
