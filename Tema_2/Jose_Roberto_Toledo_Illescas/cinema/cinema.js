@@ -32,27 +32,34 @@ function updateButacas(){
 
 function suggest(solicitud){
 
-    let contador = 0;
     let temp = [];
-
+    let varVal = false;
+    
     if (solicitud > N) {
         return temp;
     } 
 
     for(let i = N-1; i > 0; i--){
+        let contador = 0;
         for(let j = 0; j < N; j++){
-            if(butacas[i][j].estado == false){
+            if(butacas[i][j].estado == false && contador < solicitud && !varVal){
                 contador++;
                 temp.push(butacas[i][j].id);
-                if(contador==solicitud){
-                    return temp;
-                } 
-            } else{
+                if(contador == solicitud){
+                    varVal = true;
+                }
+            } else if(!varVal){
+                contador = 0;
+                temp = [];
+            }
+            if(j == N -1 && contador > 0 && !varVal){
                 contador = 0;
                 temp = [];
             }
         }
     }
+
+    return temp;
 }
 
 const N = 10; 
@@ -61,5 +68,5 @@ updateButacas();
 console.log("Butacas")
 printButacas(butacas);
 const reserva = suggest(5);
-console.log("Sugerencia:")
+console.log("Sugerencias:")
 printButacas(reserva);

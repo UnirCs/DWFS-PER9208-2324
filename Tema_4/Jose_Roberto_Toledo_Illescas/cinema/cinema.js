@@ -29,25 +29,30 @@ function printButacas(data){
 
 function suggest(solicitud){
 
-    let contador = 0;
     let temp = [];
+    let varVal = false;
 
     if (solicitud > col) {
         return temp;
     } 
 
     for(let i = fil-1; i > 0; i--){
+        let contador = 0;
         for(let j = 0; j < col; j++){
-            if(butacas[i][j].estado == false){
+            if(butacas[i][j].estado == false && contador < solicitud && !varVal){
                 contador++;
                 temp.push(butacas[i][j].id);
                 if(contador==solicitud){
                     colorReserva(temp);
-                    return temp;
+                    varVal = true;
                 } else{
                     colorNormal(temp);
                 }
-            } else{
+            } else if(!varVal){
+                contador = 0;
+                temp = [];
+            }
+            if(j == col -1 && contador > 0 && !varVal){
                 contador = 0;
                 temp = [];
             }
