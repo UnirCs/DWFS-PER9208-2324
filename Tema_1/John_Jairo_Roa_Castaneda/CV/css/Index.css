@@ -31,6 +31,10 @@ h1{
     color: white;
 }
 
+.leftSection__titlec{
+    text-align: center;
+}
+
 .article__title{
     background-color: #d7d8de;
     text-align: center;
