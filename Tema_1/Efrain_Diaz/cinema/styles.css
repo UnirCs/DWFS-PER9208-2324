@@ -54,3 +54,35 @@
   margin-bottom: 3px; 
   font-size: small;
 }
+
+.container-fluid-custom {
+  display: grid;
+  gap: 3px;
+  align-items: center;
+  grid-template-columns: 1fr 2fr;
+}
+
+.grid-container {
+  display: grid;
+  gap: 3rem; 
+  grid-template-columns: 1fr;
+}
+
+.circle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.screen_label {
+  margin-right: 1rem; 
+}
+
+.row-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem; 
+}
+
+
+
