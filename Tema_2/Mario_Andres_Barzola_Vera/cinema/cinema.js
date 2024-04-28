@@ -82,134 +82,21 @@ for(let i=0;i<N;i++){
 }
 console.log("ULTIMA FILA");
 console.log("");
-console.log("Puestos sugeridos: " + suggest(6));
+console.log("Puestos sugeridos: " + suggest(3));
 
 //funcion que sirve para ocupar asientos segun el argoritmo del ejercicio tema 2
 function suggest(cantAsientos){
     let matrizId=[];
-    let flag=true;  
-    for(let i=N-1;i>-1 && flag===true;i--){
-        let pos1= [];
-        let it1=false;
-        for(let x=N-1;x>0 && cantAsientos<N && it1===false;x--){
-            if(cantAsientos===1){
-                if(butacas[i][j].getEstado()===false){
+    if(cantAsientos<=N){
+        for(let i=N-1;i>-1 && matrizId.length< cantAsientos; i--){
+            matrizId=[];
+            for (let j = 0; j < N && matrizId.length < cantAsientos && N - j >= cantAsientos - matrizId.length; j++) {
+                if(!butacas[i][j].getEstado()){
                     matrizId.push(butacas[i][j].getId());
-                    it1=butacas[i][j].getEstado();
-                    flag=butacas[i][j].getEstado();
-                }
-
-            }else if(cantAsientos===2){
-                it1=!(butacas[i][x].getEstado()) && !(butacas[i][(x-1)].getEstado());
-                if(it1===true){
-                    for(let a=0;a<cantAsientos;a++){
-                        matrizId.push(butacas[i][x-a].getId());
-                    }
-                    flag=!it1;
-                }
-            }else if(cantAsientos===3){
-                it1=!(butacas[i][x].getEstado()) && !(butacas[i][(x-1)].getEstado()) && !(butacas[i][(x-2)].getEstado());
-                if(it1===true){
-                    for(let a=0;a<cantAsientos;a++){
-                        matrizId.push(butacas[i][x-a].getId());
-                    }
-                    flag=!it1;
-                }
-
-            }else if(cantAsientos===4){
-                if((x-1)>=0 && (x-2)>=0 && (x-3)>=0){
-                    it1=!(butacas[i][x].getEstado()) && !(butacas[i][(x-1)].getEstado()) && !(butacas[i][(x-2)].getEstado()) && !(butacas[i][(x-3)].getEstado());
-                    if(it1===true){
-                        for(let a=0;a<cantAsientos;a++){
-                            matrizId.push(butacas[i][x-a].getId());
-                        }
-                        flag=!it1;
-                    }
                 }else{
-                    it1=true;
+                    matrizId=[];
                 }
-               
-                
-
-            }else if(cantAsientos===5){
-                if((x-1)>=0 && (x-2)>=0 && (x-3)>=0 && (x-4)>=0){
-                    it1=!(butacas[i][x].getEstado()) && !(butacas[i][(x-1)].getEstado()) && !(butacas[i][(x-2)].getEstado()) && !(butacas[i][(x-3)].getEstado()) && !(butacas[i][(x-4)].getEstado());
-                    if(it1===true){
-                        for(let a=0;a<cantAsientos;a++){
-                            matrizId.push(butacas[i][x-a].getId());
-                        }
-                        flag=!it1;
-                    }
-
-                }else{
-                    it1=true;
-                }
-                
-
-            }else if(cantAsientos===6){
-                if((x-1)>=0 && (x-2)>=0 && (x-3)>=0 && (x-4)>=0 && (x-5)>=0){
-                    it1=!(butacas[i][x].getEstado()) && !(butacas[i][(x-1)].getEstado()) && !(butacas[i][(x-2)].getEstado()) && !(butacas[i][(x-3)].getEstado()) && !(butacas[i][(x-4)].getEstado()) && !(butacas[i][(x-5)].getEstado());
-                    if(it1===true){
-                        for(let a=0;a<cantAsientos;a++){
-                            matrizId.push(butacas[i][x-a].getId());
-                        }
-                    flag=!it1;
-                    }
-
-                }else{
-                    it1=true;
-                }
-                
-
-            }else if(cantAsientos===7){
-                if((x-1)>=0 && (x-2)>=0 && (x-3)>=0 && (x-4)>=0 && (x-5)>=0 && (x-6)>=0){
-                    it1=!(butacas[i][x].getEstado()) && !(butacas[i][(x-1)].getEstado()) && !(butacas[i][(x-2)].getEstado()) && !(butacas[i][(x-3)].getEstado()) && !(butacas[i][(x-4)].getEstado()) && !(butacas[i][(x-5)].getEstado()) && !(butacas[i][(x-6)].getEstado());
-                    if(it1===true){
-                        for(let a=0;a<cantAsientos;a++){
-                            matrizId.push(butacas[i][x-a].getId());
-                        }
-                        flag=!it1;
-                    }
-
-
-                }else{
-                    it1=true;
-                }
-
-                
-            }else if(cantAsientos===8){
-                if((x-1)>=0 && (x-2)>=0 && (x-3)>=0 && (x-4)>=0 && (x-5)>=0 && (x-6)>=0 && (x-7)>=0){
-                    it1=!(butacas[i][x].getEstado()) && !(butacas[i][(x-1)].getEstado()) && !(butacas[i][(x-2)].getEstado()) && !(butacas[i][(x-3)].getEstado()) && !(butacas[i][(x-4)].getEstado()) && !(butacas[i][(x-5)].getEstado()) && !(butacas[i][(x-6)].getEstado()) && !(butacas[i][(x-7)].getEstado());
-                    if(it1===true){
-                        for(let a=0;a<cantAsientos;a++){
-                            matrizId.push(butacas[i][x-a].getId());
-                        }
-                        flag=!it1;
-                    }
-
-                }else{
-                    it1=true;
-                }
-
-                
-
-            }else if(cantAsientos===9){
-                if((x-1)>=0 && (x-2)>=0 && (x-3)>=0 && (x-4)>=0 && (x-5)>=0 && (x-6)>=0 && (x-7)>=0 && (x-8)>=0){
-                    it1=!(butacas[i][x].getEstado()) && !(butacas[i][(x-1)].getEstado()) && !(butacas[i][(x-2)].getEstado()) && !(butacas[i][(x-3)].getEstado()) && !(butacas[i][(x-4)].getEstado()) && !(butacas[i][(x-5)].getEstado()) && !(butacas[i][(x-6)].getEstado()) && !(butacas[i][(x-7)].getEstado()) && !(butacas[i][(x-8)].getEstado());
-                    if(it1===true){
-                        for(let a=0;a<cantAsientos;a++){
-                            matrizId.push(butacas[i][x-a].getId());
-                        }
-                        flag=!it1;
-                    }
-
-                }else{
-                    it1=true;
-                }
-                
-
-            }           
-            
+            }
         }
     }
     return matrizId;
