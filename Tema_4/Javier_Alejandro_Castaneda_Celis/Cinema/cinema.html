@@ -7,13 +7,14 @@
     <title>Cinema</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="cinema.css">
+    <link rel="stylesheet" href="./css/cinema.css">
     </link>
+    <script src="./js/cinema.js"></script>
 </head>
 
 <body class="bg-light">
     <div class="col-12 text-center p-5 bg-dark text-white">
-        <h1>UNIR Cinema</h1>
+        <h1 id="registro" class="titulo-cinema">UNIR Cinema</h1>
     </div>
 
     <div class="container text-center">
@@ -23,11 +24,11 @@
             <div class="container_squares text-center">
                 <div class="row text-center">
                     <div class="col-6">
-                        <div class="green-square"></div>
+                        <div class="gray-square"></div>
                         <div class="text-right">Disponible</div>
                     </div>
                     <div class="col-6">
-                        <div class="gray-square"></div>
+                        <div class="green-square"></div>
                         <div class="text-right">Ocupado</div>
                     </div>
                 </div>
@@ -42,212 +43,222 @@
             <div class="col-8">
 
                 <div class="row flex-row mt-5">
-                    <div class="col">
-                        <h5>Fila 1</h5>
-                    </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="col"></div>
+                    <div class="cinema_seat col p-0" type="notAvailable" id="1">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">9</span>
+                        <span class="seat_num">1</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="occupied">
-                        <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">8</span>
-                    </div>
-                    <div class="cinema_seat col p-0" type="available">
-                        <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">7</span>
-                    </div>
-                    <div class="cinema_seat col p-0" type="available">
-                        <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">6</span>
-                    </div>
-                    <div class="cinema_seat col p-0" type="available">
-                        <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">5</span>
-                    </div>
-                    <div class="cinema_seat col p-0" type="available">
-                        <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">4</span>
-                    </div>
-                    <div class="cinema_seat col p-0" type="available">
-                        <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">3</span>
-                    </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="cinema_seat col p-0" type="notAvailable" id="2">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
                         <span class="seat_num">2</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="cinema_seat col p-0" type="available" id="3">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">1</span>
+                        <span class="seat_num">3</span>
+                    </div>
+                    <div class="cinema_seat col p-0" type="available" id="4">
+                        <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
+                        <span class="seat_num">4</span>
+                    </div>
+                    <div class="cinema_seat col p-0" type="available" id="5">
+                        <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
+                        <span class="seat_num">5</span>
+                    </div>
+                    <div class="cinema_seat col p-0" type="available" id="6">
+                        <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
+                        <span class="seat_num">6</span>
+                    </div>
+                    <div class="cinema_seat col p-0" type="available" id="7">
+                        <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
+                        <span class="seat_num">7</span>
+                    </div>
+                    <div class="cinema_seat col p-0" type="available" id="8">
+                        <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
+                        <span class="seat_num">8</span>
+                    </div>
+                    <div class="cinema_seat col p-0" type="available" id="9">
+                        <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
+                        <span class="seat_num">9</span>
+                    </div>
+                    <div class="cinema_seat col p-0" type="available" id="10">
+                        <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
+                        <span class="seat_num">10</span>
                     </div>
                 </div>
 
                 <div class="row flex-row mt-4">
-                    <div class="col">
-                        <h5>Fila 2</h5>
-                    </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="col"></div>
+                    <div class="cinema_seat col p-0" type="available" id="11">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">9</span>
+                        <span class="seat_num">11</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="available">
+                    <div class="cinema_seat col p-0" type="available" id="12">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">8</span>
+                        <span class="seat_num">12</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="cinema_seat col p-0" type="available" id="13">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">7</span>
+                        <span class="seat_num">13</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="cinema_seat col p-0" type="available" id="14">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">6</span>
+                        <span class="seat_num">14</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="available">
+                    <div class="cinema_seat col p-0" type="available" id="15">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">5</span>
+                        <span class="seat_num">15</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="available">
+                    <div class="cinema_seat col p-0" type="available" id="16">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">4</span>
+                        <span class="seat_num">16</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="available">
+                    <div class="cinema_seat col p-0" type="available" id="17">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">3</span>
+                        <span class="seat_num">17</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="cinema_seat col p-0" type="available" id="18">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">2</span>
+                        <span class="seat_num">18</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="available">
+                    <div class="cinema_seat col p-0" type="available" id="19">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">1</span>
+                        <span class="seat_num">19</span>
+                    </div>
+                    <div class="cinema_seat col p-0" type="available" id="20">
+                        <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
+                        <span class="seat_num">20</span>
                     </div>
                 </div>
 
                 <div class="row flex-row mt-4">
-                    <div class="col">
-                        <h5>Fila 3</h5>
-                    </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="col"></div>
+                    <div class="cinema_seat col p-0" type="available" id="21">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">9</span>
+                        <span class="seat_num">21</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="available">
+                    <div class="cinema_seat col p-0" type="available" id="22">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">8</span>
+                        <span class="seat_num">22</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="available">
+                    <div class="cinema_seat col p-0" type="available" id="23">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">7</span>
+                        <span class="seat_num">23</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="available">
+                    <div class="cinema_seat col p-0" type="notAvailable" id="24">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">6</span>
+                        <span class="seat_num">24</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="cinema_seat col p-0" type="available" id="25">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">5</span>
+                        <span class="seat_num">25</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="available">
+                    <div class="cinema_seat col p-0" type="notAvailable" id="26">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">4</span>
+                        <span class="seat_num">26</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="cinema_seat col p-0" type="notAvailable" id="27">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">3</span>
+                        <span class="seat_num">27</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="available">
+                    <div class="cinema_seat col p-0" type="available" id="28">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">2</span>
+                        <span class="seat_num">28</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="cinema_seat col p-0" type="available" id="29">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">1</span>
+                        <span class="seat_num">29</span>
+                    </div>
+                    <div class="cinema_seat col p-0" type="available" id="30">
+                        <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
+                        <span class="seat_num">30</span>
                     </div>
                 </div>
 
                 <div class="row flex-row mt-4">
-                    <div class="col">
-                        <h5>Fila 4</h5>
-                    </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="col"></div>
+                    <div class="cinema_seat col p-0" type="available" id="31">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">9</span>
+                        <span class="seat_num">31</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="cinema_seat col p-0" type="available" id="32">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">8</span>
+                        <span class="seat_num">32</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="cinema_seat col p-0" type="available" id="33">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">7</span>
+                        <span class="seat_num">33</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="available">
+                    <div class="cinema_seat col p-0" type="notAvailable" id="34">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">6</span>
+                        <span class="seat_num">34</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="available">
+                    <div class="cinema_seat col p-0" type="available" id="35">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">5</span>
+                        <span class="seat_num">35</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="cinema_seat col p-0" type="available" id="36">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">4</span>
+                        <span class="seat_num">36</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="cinema_seat col p-0" type="notAvailable" id="37">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">3</span>
+                        <span class="seat_num">37</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="available">
+                    <div class="cinema_seat col p-0" type="available" id="38">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">2</span>
+                        <span class="seat_num">38</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="available">
+                    <div class="cinema_seat col p-0" type="available" id="39">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">1</span>
+                        <span class="seat_num">39</span>
+                    </div>
+                    <div class="cinema_seat col p-0" type="available" id="40">
+                        <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
+                        <span class="seat_num">40</span>
                     </div>
                 </div>
 
                 <div class="row flex-row mt-4 mb-5">
-                    <div class="col">
-                        <h5>Fila 5</h5>
-                    </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="col"></div>
+                    <div class="cinema_seat col p-0" type="available" id="41">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">9</span>
+                        <span class="seat_num">41</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="cinema_seat col p-0" type="available" id="42">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">8</span>
+                        <span class="seat_num">42</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="cinema_seat col p-0" type="available" id="43">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">7</span>
+                        <span class="seat_num">43</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="cinema_seat col p-0" type="available" id="44">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">6</span>
+                        <span class="seat_num">44</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="cinema_seat col p-0" type="available" id="45">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">5</span>
+                        <span class="seat_num">45</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="cinema_seat col p-0" type="available" id="46">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">4</span>
+                        <span class="seat_num">46</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="cinema_seat col p-0" type="available" id="47">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">3</span>
+                        <span class="seat_num">47</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="cinema_seat col p-0" type="available" id="48">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">2</span>
+                        <span class="seat_num">48</span>
                     </div>
-                    <div class="cinema_seat col p-0" type="occupied">
+                    <div class="cinema_seat col p-0" type="available" id="49">
                         <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
-                        <span class="seat_num">1</span>
+                        <span class="seat_num">49</span>
+                    </div>
+                    <div class="cinema_seat col p-0" type="available" id="50">
+                        <img src="img/cinema-seat.svg" alt="img/cinema-seat.svg">
+                        <span class="seat_num">50</span>
                     </div>
                 </div>
 
@@ -280,7 +291,7 @@
         <p>Teléfono: 999-456-7890</p>
         <p>Correo: cinema@unircinema.com</p>
     </footer>
-    <script src="cinema.js"></script>
+
 
 </body>
 
