@@ -1,6 +1,4 @@
 const N = 10; // Número de filas y columnas
-const N_FILAS = 5;
-const N_COLUMNAS = 10;
 
 function setup() {
     let idContador = 1;
@@ -119,3 +117,11 @@ function loadOccupied(arrayButacas) {
     return arrayButacas;
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+  var volverCartelera = document.getElementById("registro");
+  volverCartelera.addEventListener("click", function(event) {
+      event.preventDefault();
+
+      window.location.replace('registro.html');
+  });
+});
