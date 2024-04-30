@@ -37,17 +37,18 @@ butacas[7][2].estado = true;
 
 // Función para sugerir asientos disponibles
 function suggest(numAsientos) {
-    let sugeridos = new Set();
+    let sugeridos = [];
+    let asientosEncontrados = false; // Bandera para controlar si se encontraron asientos sugeridos
 
     // Recorrer las filas desde la más lejana a la pantalla
-    for (let i = N - 1; i >= 0; i--) {
+    for (let i = N - 1; i >= 0 && !asientosEncontrados; i--) {
         let filaActual = butacas[i]; // Obtener la fila actual
 
         let contadorAsientosLibres = 0; // Contador de asientos libres consecutivos
         let inicioSugeridos = null; // Índice de inicio de los asientos sugeridos
 
         // Recorrer los asientos de la fila actual
-        for (let j = 0; j < N; j++) {
+        for (let j = 0; j < N && !asientosEncontrados; j++) {
             let asiento = filaActual[j];
             if (!asiento.estado) {
                 // Si el asiento está libre
@@ -55,7 +56,7 @@ function suggest(numAsientos) {
                 if (contadorAsientosLibres === numAsientos) {
                     // Si encontramos suficientes asientos libres consecutivos
                     inicioSugeridos = j - numAsientos + 1;
-                    break;
+                    asientosEncontrados = true; // Actualizar la bandera
                 }
             } else {
                 // Reiniciar el contador si encontramos un asiento ocupado
@@ -64,17 +65,17 @@ function suggest(numAsientos) {
             }
         }
 
-        // Agregar los asientos sugeridos al conjunto
-        if (inicioSugeridos !== null) {
+        // Agregar los asientos sugeridos al conjunto si se encontraron
+        if (asientosEncontrados && inicioSugeridos !== null) {
             for (let k = inicioSugeridos; k < inicioSugeridos + numAsientos; k++) {
-                sugeridos.add(filaActual[k].id);
+                sugeridos.push(filaActual[k].id);
             }
-            break;
         }
     }
 
-    return sugeridos;
+    return sugeridos.slice(0, numAsientos);
 }
+
 
 let numAsientos = 5; // Número de asientos que se desea reservar
 let asientosSugeridos = suggest(numAsientos);
