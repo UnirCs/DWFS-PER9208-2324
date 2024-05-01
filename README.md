@@ -1,7 +1,7 @@
 PER 9208 - 2023/2024
 ================
 
-Usaremos este repositorio para nuestro trabajo colaborativo a través del curso..
+Usaremos este repositorio para nuestro trabajo colaborativo a través del curso.
 El objetivo es que afiancemos los conocimientos que vamos obteniendo en las clases.
 
 Trabajaremos con Git. Puedes descargarlo, si no lo tienes instalado ya en tu máquina, [aquí](https://git-scm.com/downloads).
