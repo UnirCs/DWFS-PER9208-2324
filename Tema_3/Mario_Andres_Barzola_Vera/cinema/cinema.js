@@ -80,10 +80,11 @@ for(let i=0;i<N;i++){
     }
     console.log(pp);
 }
+/*
 console.log("ULTIMA FILA");
 console.log("");
 console.log("Puestos sugeridos: " + suggest(3));
-
+*/
 //funcion que sirve para ocupar asientos segun el argoritmo del ejercicio tema 2
 function suggest(cantAsientos){
     let matrizId=[];
@@ -99,5 +100,6 @@ function suggest(cantAsientos){
             }
         }
     }
+    console.log("Puestos sugeridos: " + matrizId);
     return matrizId;
 }
