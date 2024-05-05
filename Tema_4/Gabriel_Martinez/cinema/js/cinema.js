@@ -52,7 +52,6 @@ function Seat(id, state, selectCallback, unselectCallback){
         divSeat.appendChild(divSeatFront)
         divSeat.appendChild(divSeatBack)
         divSeat.onclick = () => this.onClick()
-        //divSeat.addEventListener('click', this.onClick)
         return divSeat
     }
 
