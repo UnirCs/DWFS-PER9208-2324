@@ -1,0 +1,107 @@
+body{
+    margin: 0;
+    padding:0;
+    font-family:montserrat;
+    background: linear-gradient(150deg, black,rgb(73, 73, 73));
+    height: 100vh;
+}
+
+.container
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    transform: translate( -50%, -50% );
+    border-radius: 10px;
+    text-align: center;
+}
+
+.container h2
+{
+color: yellow !important;
+}
+
+.container-form
+{
+    background: rgb(92, 90, 90);
+    border-radius: 10px;
+    padding-top: 5px;
+}
+
+form .input-form {
+    position: relative;
+    border-bottom: 2px solid rgb(46, 114, 46);
+    margin-top: 15px;
+    align-items: center;
+    
+}
+
+.input-form input{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+    
+}
+
+.input-form label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: white;
+    transform: translateY( -50% ) ;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.input-form span::before{
+    content: '';
+    position: absolute;
+    top: 40%;
+    left: 0px;
+    width: 0% ;
+    height: 2px;
+    background: white;
+    transition: .5s;
+}
+
+.input-form input:focus ~ label,
+.input-form input:valid ~ label{
+    top:-5px;
+    color: white;
+}
+
+.input-form input:focus ~ span::before,
+.input-form input:valid ~ span::before{
+    top:-5px;
+    color: white;
+}
+
+.input-form button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.button-form{
+    background-color: yellow !important;
+    border-radius: 6px;
+    border: none;
+    color:black !important;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 16px 24px;
+    text-align: center;
+    text-transform: uppercase;
+    width: auto;
+}
+
+.button-form :hover{
+    background-color: #FB7E29;
+    color: #fff;
+}
