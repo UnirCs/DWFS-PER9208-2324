@@ -31,3 +31,4 @@ Aquí tienes un ejemplo de cómo podría ser el diseño (no es necesario que sea
 <img src="https://github.com/UnirCs/DWFS-PER9208-2324/blob/master/Tema_1/00_Resources/Cinema/SeatSelection.png?raw=true">
 
 
+prueba
