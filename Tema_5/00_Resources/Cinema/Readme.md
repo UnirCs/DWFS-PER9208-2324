@@ -7,7 +7,7 @@ En algún momento, por supuesto, tendremos que incluir toda la lógica y diseño
 En este ejercicio nos centraremos en realizar una vista orientada a componentes.
 
 ## 2. Instrucciones
-Crearemos una vista para nuestro FrontEnd dentro de un archivo que puede llamarse ``Movies.js``.
+Crearemos una vista para nuestro FrontEnd dentro de un archivo que puede llamarse ``movies.js``.
 
 - Crearemos un componente funcional ``Header`` que contendrá el banner que querremos mostrar en todas las páginas.
 - Crearemos un componente funcional ``Footer`` que contendrá el pie que querremos mostrar en todas las páginas.
