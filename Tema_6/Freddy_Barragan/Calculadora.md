@@ -15,7 +15,7 @@ Nuestra calculadora tendrá memoria y siempre se podrán consultar los datos de 
 
 **Recursos identificados:**
 - Operaciones: Representa cada operación que se haga en la calculadora.
-- Detalles de Operaciones: Representa cada resultado y sus elementos.
+- Detalles de Operaciones: Representa cada resultado y sus elementos.<br/><br/><br/>
 
 | Método HTTP                            | URI                   | Query Params  | Cuerpo de la Petición                                              | Cuerpo de la Respuesta                                                                | Códigos de Respuesta                                    |
 |----------------------------------------|-----------------------|---------------|--------------------------------------------------------------------|---------------------------------------------------------------------------------------|---------------------------------------------------------|

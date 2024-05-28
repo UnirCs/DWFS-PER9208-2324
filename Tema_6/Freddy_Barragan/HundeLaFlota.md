@@ -32,3 +32,29 @@ Ten en cuenta que podría no ser necesario definir un endpoint por cada una de l
 - ¿Qué recursos tiene que manejar la API?
 - ¿Cómo se relacionan entre sí?
 - ¿Qué información (atributos) guarda cada recurso?
+
+**Recursos identificados:**
+- Partida: Representa cada juego.
+- Barco: Representa cada nave que se debe undir por el jugador contrario.
+- Disparo: Representa cada impacto en la cuadrícula del jugador contrario.
+- Usuarios: Rpresentan los jugadores de las partidas.<br/><br/><br/>
+
+
+
+| Método HTTP                            | URI                   | Query Params  | Cuerpo de la Petición                                              | Cuerpo de la Respuesta                                                                | Códigos de Respuesta                                    |
+|----------------------------------------|-----------------------|---------------|--------------------------------------------------------------------|---------------------------------------------------------------------------------------|---------------------------------------------------------|
+| POST                                   | /partidas                | N/A           | `{"jugador1Id": 789, "jugador2Id": 790, "estado": "Iniciada", "idGanador": 789}`          | `{"partidaId": 789, "jugador1Id": 789, "jugador2Id": 790, "estado": "Iniciada", "idGanador": 789}`              | 201 Created<br/>400 Bad Request<br/>500 Internal Server Error |
+| DELETE                                 | /partidas/{partidaId}    | N/A           | N/A                                                                | `{"jugador1Id": 789, "jugador2Id": 790, "estado": "Iniciada", "idGanador": 789}`                                                        | 200 OK<br/>404 Not Found<br/>500 Internal Server Error      |
+| PATCH                                  | /partidas/{partidaId}    | N/A           | `{"estado": "Finalizada"}` | `{"partidaId": 789, "jugador1Id": 789, "jugador2Id": 790, "estado": "Finalizada", "idGanador": 789}`          | 200 OK<br/>400 Bad Request<br/>500 Internal Server Error   |
+| GET                                    | /partidas/{partidaId}/disparos   | N/A          | N/A         | `{"disparos":[{"disparoId": 789, "jugadorId": 789, "partidaId": 789, "x": 4, "y": "D", "barcoGolpeadoId"(Si golpea un barco, de lo contrario en null): 789}]}`           | 200 OK<br/>404 Not Found<br/>500 Internal Server Error   |
+| GET                                    | /partidas/{partidaId}/jugadores/{jugadorId}/barcos   | N/A          | N/A         | `{"barcos":[{"barcoId": 789, "cantidadCuadros": 4, "partidaId": 789, "x1": 2, "y1": "A", "x2": 5, "y2": "A"}]}`           | 200 OK<br/>404 Not Found<br/>500 Internal Server Error   |
+|
+| POST                                   | /barcos                  | N/A           | `{"cantidadCuadros": 4, "jugadorId": 789, "partidaId": 789, "x1": 2, "y1": "A", "x2": 5, "y2": "A"}`          | `{"barcoId": 789, "cantidadCuadros": 4, "jugadorId": 789, "partidaId": 789, "x1": 2, "y1": "A", "x2": 5, "y2": "A"}`              | 201 Created<br/>400 Bad Request<br/>500 Internal Server Error |
+| DELETE                                 | /barcos/{barcoId}        | N/A           | N/A         | `{"cantidadCuadros": 4, "jugadorId": 789, "partidaId": 789, "x1": 2, "y1": "A", "x2": 5, "y2": "A"}`                | 200 OK<br/>404 Not Found<br/>500 Internal Server Error      |
+|
+| POST                                   | /jugadores                | N/A           | `{"apellido": "Barragán", "nombre": "Freddy", "identificacion": "123456789", "edad": 33}`          | `{"jugadorId": 789, "apellido": "Barragán", "nombre": "Freddy", "identificacion": "123456789", "edad": 33}`              | 201 Created<br/>400 Bad Request<br/>500 Internal Server Error |
+| DELETE                                 | /jugadores/{jugadorId}   | N/A           | N/A         | `{"apellido": "Barragán", "nombre": "Freddy", "identificacion": "123456789", "edad": 33}`                                                        | 200 OK<br/>404 Not Found<br/>500 Internal Server Error      |
+| GET                                    | /jugadores/{jugadorId}   | N/A          | N/A         | `{"jugadorId": 789, "apellido": "Barragán", "nombre": "Freddy", "identificacion": "123456789", "edad": 33}`           | 200 OK<br/>404 Not Found<br/>500 Internal Server Error   |
+|
+| POST                                   | /disparos                | N/A           | `{"jugadorId": 789, "partidaId": 789, "x": 4, "y": "D", "barcoGolpeadoId"(Si golpea un barco, de lo contrario en null): 789}`          | `{"disparoId": 789, "jugadorId": 789, "partidaId": 789, "x": 4, "y": "D", "barcoGolpeadoId"(Si golpea un barco, de lo contrario en null): 789}`              | 201 Created<br/>400 Bad Request<br/>500 Internal Server Error |
+|

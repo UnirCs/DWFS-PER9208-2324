@@ -16,7 +16,7 @@ Las operaciones que la API debe soportar son las siguientes:
 - Salas: Representa cada sala disponible en el cine.
 - Usuarios: Representa cada usuario registrado en el cine.
 - Reservas: Representa cada reserva creada por o para un usuario.
-- Pagos: Representa cada pago de una reserva.
+- Pagos: Representa cada pago de una reserva.<br/><br/><br/>
 
 | Método HTTP                            | URI                   | Query Params  | Cuerpo de la Petición                                              | Cuerpo de la Respuesta                                                                | Códigos de Respuesta                                    |
 |----------------------------------------|-----------------------|---------------|--------------------------------------------------------------------|---------------------------------------------------------------------------------------|---------------------------------------------------------|
