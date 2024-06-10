@@ -16,9 +16,9 @@
 | DELETE| /api/v1/partidas/{id}| -| - | `{"message": "Partida eliminada"}`                                | 200 OK, 404 Not Found, 500 Internal Server Error |
 | PATCH       | /api/partidas/{id}| -| `"player2": "cvgv29"` | `{"id": "FDE17720-0555-47FB-8AEE-D5DD54C26D11", "player1": "lxgv12", "player2": "cvgv29"}`| 200 OK, 404 Not Found, 500 Internal Server Error |
 | PATCH       | /api/partidas/{id}| -          | `"estado": "finalizada/iniciada"` | `{"idPartida": "FDE17720-0555-47FB-8AEE-D5DD54C26D11", "player1": "lxgv12", "player2": "cvgv29"}`| 200 OK, 404 Not Found, 500 Internal Server Error |
-| GET | /partida| jugadores asociados, barcos de cada jugador, disparos realizados, ganador | -| `{"id": "FDE17720-0555-47FB-8AEE-D5DD54C26D11", "player1": "lxgv12", "player2": "cvgv28"}, "ganador": "lxgv12", "barcos": [...], "disparos": [...]`| 200 OK<br/>400 Bad Request<br/>500 Internal Server Error   |
+| GET | /partidas| jugadores asociados, barcos de cada jugador, disparos realizados, ganador | -| `{"id": "FDE17720-0555-47FB-8AEE-D5DD54C26D11", "player1": "lxgv12", "player2": "cvgv28"}, "ganador": "lxgv12", "barcos": [...], "disparos": [...]`| 200 OK<br/>400 Bad Request<br/>500 Internal Server Error   |
 | POST | /api/v1/disparos | -| `{"idUsuario": "8B3AC27B-355B-404F-AD4E-12232257A3E0", "posicion": [...]`| `{"idUsuario": "8B3AC27B-355B-404F-AD4E-12232257A3E0", "posicion": [...]` | 201 Created, 400 Bad Request, 500 Internal Server Error|
-|POST | /api/v1/barco | -| `{"id": "8B3AC27B-355B-404F-AD4E-12232257A3E0", "posicion": [...]`| `{"id": "8B3AC27B-355B-404F-AD4E-12232257A3E0", "posicion": [...]` | 201 Created, 400 Bad Request, 500 Internal Server Error |
+|POST | /api/v1/barcos | -| `{"id": "8B3AC27B-355B-404F-AD4E-12232257A3E0", "posicion": [...]`| `{"id": "8B3AC27B-355B-404F-AD4E-12232257A3E0", "posicion": [...]` | 201 Created, 400 Bad Request, 500 Internal Server Error |
 | DELETE      | /api/v1/barcos/{id} | - | - | `{"message": "Barco eliminado"}`           | 200 OK, 404 Not Found, 500 Internal Server Error|
 | GET         | /api/v1/barcos/{idUsuario} | -| `{"idUsuario": "8B3AC27B-355B-404F-AD4E-12232257A3E0",]`| ``{"barco":  [...], "posicion": [...], "disparos": [...]` | 200 OK, 400 Bad Request, 404 Not Found, 500 Internal Server Error |
 
