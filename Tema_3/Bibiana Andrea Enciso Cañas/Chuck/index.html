@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <title>Chuck Norris Jokes!!</title>
+
+    <script>
+        // Definición de una función asíncrona llamada f_Cargar
+        async function f_Cargar() {
+            // Hace una solicitud fetch a la API de Chuck Norris para obtener un chiste aleatorio
+            let lcFetch = await fetch("https://api.chucknorris.io/jokes/random");
+
+            // Espera a que la respuesta se convierta en formato JSON
+            let lcResponse = await lcFetch.json();
+
+            // Imprime el valor del chiste en la consola del navegador
+            console.log(lcResponse.value);
+
+            // Actualiza el contenido del elemento con id "oChiste" en el HTML con el chiste obtenido
+            document.getElementById("oChiste").innerHTML = lcResponse.value;
+        }
+    </script>
+</head>
+
+<body>
+<div class="container">
+    <button type="button" class="btn btn-info" onclick="f_Cargar()"> Dame un chiste!</button>
+    <p id="oChiste"></p>
+</div>
+</body>
+</html>

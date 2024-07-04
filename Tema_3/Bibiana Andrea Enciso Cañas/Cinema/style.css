@@ -1,0 +1,108 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.contenedor {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+    color: #fd00d3;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+/* Estilos para la sala de cine */
+.sala {
+    text-align: center;
+}
+
+.sala-container {
+    display: flex;
+    justify-content: center;
+}
+
+#tablaButacas {
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+#tablaButacas th, #tablaButacas td {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ffffff;
+    text-align: center;
+}
+
+#tablaButacas th {
+    background-color: #f0f0f0;
+    font-weight: normal;
+}
+
+.td__libre {
+    background-color: #c3e6cb;
+    cursor: pointer;
+}
+
+.td__ocupado {
+    background-color: #19fd00;
+}
+
+/* Estilos para el formulario */
+form {
+    text-align: center;
+    justify-content: center;
+
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+    justify-content: center;
+
+}
+input {
+
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    text-align: center;
+    margin-left: 310px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #0022ef;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    justify-content: center;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+footer{
+    text-align: center;
+
+}

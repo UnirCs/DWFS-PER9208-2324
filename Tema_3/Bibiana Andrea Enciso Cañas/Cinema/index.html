@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="cinema.js" defer></script>
+    <title>UNIR-CINEMA</title>
+</head>
+<body>
+<div class="contenedor">
+    <header>
+        <h1>UNIR-CINEMA</h1>
+    </header>
+<br>
+    <br>
+       <section class="sala">
+
+        <div class="sala-container">
+            <table id="tablaButacas">
+                <!-- Aquí se generarán dinámicamente las filas y columnas de butacas -->
+            </table>
+        </div>
+    </section>
+    <section>
+        <form>
+            <label for="numSeats">Indica cuántos asientos quieres reservar:</label>
+            <!-- Usamos el evento `input` para llamar a la función `suggest` cuando cambie el contenido del input -->
+            <input type="number" id="numSeats" oninput="suggest(parseInt(this.value))">
+            <button type="button" id="btnReservar">Confirmar Reserva</button>
+        </form>
+    </section>
+
+    <footer>
+        <section>
+            <div>UNIR-CINEMA</div>
+            <div>Calle 65 55-30 Medellín, Colombia</div>
+            <div>Celular: 3105317708</div>
+            <div>Email: bibiam921@hotmail.com</div>
+        </section>
+    </footer>
+</div>
+</body>
+</html>

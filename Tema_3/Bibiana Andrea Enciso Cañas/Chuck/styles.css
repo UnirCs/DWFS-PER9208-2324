@@ -1,0 +1,56 @@
+/* Estilos generales del cuerpo y del contenedor */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #19fd00, #00fdd7);
+    min-height: 100vh; /* Garantiza que el degradado cubra toda la altura visible */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container {
+    width: 80%;
+    max-width: 600px;
+    padding: 20px;
+    background-color: rgb(0, 0, 0); /* Fondo semi-transparente para resaltar el contenido */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgb(253, 0, 211);
+}
+
+/* Estilos del encabezado */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    color: #fd00d3; /* Color blanco para destacar sobre el fondo oscuro */
+    font-size: 2.5em;
+}
+
+/* Estilos del botón */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: #fff;
+    background-color: #fd00d3;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos del párrafo que muestra el chiste */
+#oChiste {
+    font-size: 1.4em;
+    line-height: 1.6;
+    color: #fff; /* Color blanco para el texto */
+}
