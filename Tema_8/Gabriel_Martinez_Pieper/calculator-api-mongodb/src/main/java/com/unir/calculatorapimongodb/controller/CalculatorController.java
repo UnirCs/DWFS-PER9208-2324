@@ -47,6 +47,54 @@ public class CalculatorController {
         }
     }
 
+    @GetMapping("/additions/{additionId}")
+    @Operation(
+            operationId = "Obtener una suma",
+            description = "Operacion de lectura",
+            summary = "Se devuelve una suma a partir de su identificador.")
+    @ApiResponse(
+            responseCode = "200",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = AdditionSubtractionResult.class)))
+    @ApiResponse(
+            responseCode = "404",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Void.class)),
+            description = "No se ha encontrado la suma con el identificador indicado.")
+    public ResponseEntity<AdditionSubtractionResult> getAddition(@PathVariable String additionId) {
+
+        AdditionSubtractionResult addition = service.getAddition(additionId);
+
+        if (addition != null) {
+            return ResponseEntity.ok(addition);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
+    }
+
+    @GetMapping("/subtractions/{subtractionId}")
+    @Operation(
+            operationId = "Obtener una resta",
+            description = "Operacion de lectura",
+            summary = "Se devuelve una resta a partir de su identificador.")
+    @ApiResponse(
+            responseCode = "200",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = AdditionSubtractionResult.class)))
+    @ApiResponse(
+            responseCode = "404",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Void.class)),
+            description = "No se ha encontrado la resta con el identificador indicado.")
+    public ResponseEntity<AdditionSubtractionResult> getSubtraction(@PathVariable String subtractionId) {
+
+        AdditionSubtractionResult subtraction = service.getSubtraction(subtractionId);
+
+        if (subtraction != null) {
+            return ResponseEntity.ok(subtraction);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
+    }
+
     @PostMapping("/subtractions")
     @Operation(
             operationId = "Realizar una resta",
@@ -97,6 +145,30 @@ public class CalculatorController {
         }
     }
 
+    @GetMapping("/multiplications/{multiplicationId}")
+    @Operation(
+            operationId = "Obtener una multiplicación",
+            description = "Operacion de lectura",
+            summary = "Se devuelve una multiplicación a partir de su identificador.")
+    @ApiResponse(
+            responseCode = "200",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = MultiplicationResult.class)))
+    @ApiResponse(
+            responseCode = "404",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Void.class)),
+            description = "No se ha encontrado la multiplicación con el identificador indicado.")
+    public ResponseEntity<MultiplicationResult> getMultiplication(@PathVariable String multiplicationId) {
+
+        MultiplicationResult multiplication = service.getMultiplication(multiplicationId);
+
+        if (multiplication != null) {
+            return ResponseEntity.ok(multiplication);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
+    }
+
     @PostMapping("/divisions")
     @Operation(
             operationId = "Realizar una división",
@@ -120,6 +192,30 @@ public class CalculatorController {
         } else {
             return ResponseEntity.badRequest().build();
         }
+    }
+
+    @GetMapping("/divisions/{divisionId}")
+    @Operation(
+            operationId = "Obtener una division",
+            description = "Operacion de lectura",
+            summary = "Se devuelve una division a partir de su identificador.")
+    @ApiResponse(
+            responseCode = "200",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = DivisionResult.class)))
+    @ApiResponse(
+            responseCode = "404",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Void.class)),
+            description = "No se ha encontrado la division con el identificador indicado.")
+    public ResponseEntity<DivisionResult> getDivision(@PathVariable String divisionId) {
+
+        DivisionResult division = service.getDivision(divisionId);
+
+        if (division != null) {
+            return ResponseEntity.ok(division);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
     }
 
     @PostMapping("/roots")
@@ -147,6 +243,30 @@ public class CalculatorController {
         }
     }
 
+    @GetMapping("/roots/{rootId}")
+    @Operation(
+            operationId = "Obtener una raiz",
+            description = "Operacion de lectura",
+            summary = "Se devuelve una raiz a partir de su identificador.")
+    @ApiResponse(
+            responseCode = "200",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = RootResult.class)))
+    @ApiResponse(
+            responseCode = "404",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Void.class)),
+            description = "No se ha encontrado la raiz con el identificador indicado.")
+    public ResponseEntity<RootResult> getRoot(@PathVariable String rootId) {
+
+        RootResult root = service.getRoot(rootId);
+
+        if (root != null) {
+            return ResponseEntity.ok(root);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
+    }
+
     @PostMapping("/powers")
     @Operation(
             operationId = "Realizar una potencia",
@@ -170,6 +290,30 @@ public class CalculatorController {
         } else {
             return ResponseEntity.badRequest().build();
         }
+    }
+
+    @GetMapping("/powers/{powerId}")
+    @Operation(
+            operationId = "Obtener una potencia",
+            description = "Operacion de lectura",
+            summary = "Se devuelve una potencia a partir de su identificador.")
+    @ApiResponse(
+            responseCode = "200",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = PowerResult.class)))
+    @ApiResponse(
+            responseCode = "404",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Void.class)),
+            description = "No se ha encontrado la potencia con el identificador indicado.")
+    public ResponseEntity<PowerResult> getPower(@PathVariable String powerId) {
+
+        PowerResult power = service.getPower(powerId);
+
+        if (power != null) {
+            return ResponseEntity.ok(power);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
     }
 
     @GetMapping("/operations")

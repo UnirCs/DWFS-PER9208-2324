@@ -35,6 +35,10 @@ public class CalculatorService {
         return repository.save(result);
     }
 
+    public AdditionSubtractionResult getAddition(String additionId){
+        return (AdditionSubtractionResult) repository.findById(additionId).orElse(null);
+    }
+
     public AdditionSubtractionResult subtract(AdditionSubtractionRequest request){
 
         Double total = request.getNumbers().getFirst();
@@ -51,6 +55,11 @@ public class CalculatorService {
         return repository.save(result);
     }
 
+    public AdditionSubtractionResult getSubtraction(String additionId){
+        return (AdditionSubtractionResult) repository.findById(additionId).orElse(null);
+    }
+
+
     public MultiplicationResult multiply(MultiplicationRequest request){
 
         MultiplicationResult result = MultiplicationResult.builder()
@@ -59,6 +68,10 @@ public class CalculatorService {
                 .parameters(request).build();
 
         return repository.save(result);
+    }
+
+    public MultiplicationResult getMultiplication(String multiplicationId){
+        return (MultiplicationResult) repository.findById(multiplicationId).orElse(null);
     }
 
     public DivisionResult divide(DivisionRequest request){
@@ -71,6 +84,10 @@ public class CalculatorService {
         return repository.save(result);
     }
 
+    public DivisionResult getDivision(String divisionId){
+        return (DivisionResult) repository.findById(divisionId).orElse(null);
+    }
+
     public RootResult root(RootRequest request){
 
         RootResult result = RootResult.builder()
@@ -81,6 +98,9 @@ public class CalculatorService {
         return repository.save(result);
     }
 
+    public RootResult getRoot(String rootId){
+        return (RootResult) repository.findById(rootId).orElse(null);
+    }
     public PowerResult power(PowerRequest request) {
 
         PowerResult result = PowerResult.builder()
@@ -89,6 +109,10 @@ public class CalculatorService {
                 .parameters(request).build();
 
         return repository.save(result);
+    }
+
+    public PowerResult getPower(String powerId){
+        return (PowerResult) repository.findById(powerId).orElse(null);
     }
 
     public List<Result> getOperations(String type){

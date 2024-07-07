@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface ResultRepository extends MongoRepository<Result, String> {
     List<Result> findAllByType(String type);
+
+
 }
