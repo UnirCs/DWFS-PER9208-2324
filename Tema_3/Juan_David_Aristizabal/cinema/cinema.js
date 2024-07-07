@@ -37,25 +37,27 @@ function suggest() {
     butacas[9][8].estado = true;
     butacas[9][9].estado = true;
 
+    let foundIds = new Set();
+    let searchComplete = false;
+
     // Buscar desde la última fila hacia la primera
-    for (let i = N - 1; i >= 0; i--) {
+    for (let i = N - 1; i >= 0 && !searchComplete; i--) {
         let ids = [];
         for (let j = 0; j < N; j++) {
             if (!butacas[i][j].estado) {
                 ids.push(butacas[i][j].id);
                 if (ids.length === numAsientos) {
-                    console.log(new Set(ids)); // Log the result before returning
-                    return new Set(ids); // Devolver los ids de los asientos encontrados
+                    foundIds = new Set(ids);
+                    searchComplete = true;
                 }
             } else {
-                ids = []; // Reiniciar acumulador si se encuentra un asiento ocupado
+                ids = [];
             }
         }
     }
 
-    // Si no se encuentran suficientes asientos juntos, devolver set vacío
-    console.log(new Set());
-    return new Set();
+    console.log(foundIds);
+    return foundIds;
 }
 
 // Hacer la función suggest global para que se pueda llamar desde el HTML

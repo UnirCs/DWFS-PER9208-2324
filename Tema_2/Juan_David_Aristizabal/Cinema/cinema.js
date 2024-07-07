@@ -21,29 +21,31 @@ function setup() {
     return butacas;
 }
 
-// Función para sugerir asientos
 function suggest(butacas, numAsientos) {
     if (numAsientos > N) {
         return new Set(); // Si se piden más asientos que los disponibles en una fila, devolver set vacío
     }
 
+    let foundIds = new Set(); // Usar una variable para guardar los IDs encontrados
+    let searchComplete = false; // Variable para controlar la búsqueda
+
     // Buscar desde la última fila hacia la primera
-    for (let i = N - 1; i >= 0; i--) {
+    for (let i = N - 1; i >= 0 && !searchComplete; i--) {
         let ids = [];
         for (let j = 0; j < N; j++) {
             if (!butacas[i][j].estado) {
                 ids.push(butacas[i][j].id);
                 if (ids.length === numAsientos) {
-                    return new Set(ids); // Devolver los ids de los asientos encontrados
+                    foundIds = new Set(ids);
+                    searchComplete = true;
                 }
             } else {
-                ids = []; // Reiniciar acumulador si se encuentra un asiento ocupado
+                ids = [];
             }
         }
     }
 
-    // Si no se encuentran suficientes asientos juntos, devolver set vacío
-    return new Set();
+    return foundIds;
 }
 
 // Ejemplo de prueba

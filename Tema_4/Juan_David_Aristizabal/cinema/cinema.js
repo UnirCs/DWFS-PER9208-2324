@@ -26,8 +26,11 @@ function suggest() {
     const seats = document.querySelectorAll('.seats-container .seat');
     const butacas = setup(seats);
 
+    let foundIds = new Set();
+    let searchComplete = false;
+
     // Buscar desde la última fila hacia la primera
-    for (let i = N - 1; i >= 0; i--) {
+    for (let i = N - 1; i >= 0 && !searchComplete; i--) {
         let ids = [];
         for (let j = 0; j < N; j++) {
             if (!butacas[i][j].estado) {
@@ -35,17 +38,20 @@ function suggest() {
                 if (ids.length === seatCount) {
                     resetSeatColors();
                     highlightSeats(ids);
-                    return new Set(ids); // Devolver los ids de los asientos encontrados
+                    foundIds = new Set(ids);
+                    searchComplete = true;
                 }
             } else {
-                ids = []; // Reiniciar acumulador si se encuentra un asiento ocupado
+                ids = [];
             }
         }
     }
 
-    // Si no se encuentran suficientes asientos juntos, devolver set vacío y resetear colores
-    resetSeatColors();
-    return new Set();
+    if (!foundIds.size) { // Si no se encontraron asientos suficientes resetear colores
+        resetSeatColors();
+    }
+
+    return foundIds; // Devolver los ids de los asientos encontrados o un set vacío
 }
 
 // Función para inicializar la matriz de butacas
