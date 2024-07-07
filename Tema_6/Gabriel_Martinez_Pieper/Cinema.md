@@ -6,6 +6,7 @@
 - **salas**
 - **usuarios**
 - **reservas**
+- **pagos**
 
 
 | Método HTTP | URI                            | Query Params | Cuerpo de la Petición                                                                                                                                                           | Cuerpo de la Respuesta                                                                                                                                                                   | Códigos de Respuesta                                                            |
