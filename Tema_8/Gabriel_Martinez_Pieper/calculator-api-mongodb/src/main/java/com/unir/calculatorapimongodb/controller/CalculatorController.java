@@ -5,6 +5,7 @@ import com.unir.calculatorapimongodb.model.request.*;
 import com.unir.calculatorapimongodb.service.CalculatorService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -178,7 +179,13 @@ public class CalculatorController {
             summary = "Se devuelve una lista de todos las operaciones almacenados en la base de datos.")
     @ApiResponse(
             responseCode = "200",
-            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Result.class)))
+            content = @Content(mediaType = "application/json", array=@ArraySchema(schema = @Schema(anyOf = {
+                    AdditionSubtractionResult.class,
+                    MultiplicationResult.class,
+                    DivisionResult.class,
+                    RootResult.class,
+                    PowerResult.class }
+            ))))
     @ApiResponse(
             responseCode = "400",
             content = @Content(mediaType = "application/json", schema = @Schema(implementation = Void.class)),
@@ -197,7 +204,12 @@ public class CalculatorController {
             summary = "Se devuelve una operación a partir de su identificador.")
     @ApiResponse(
             responseCode = "200",
-            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Result.class)))
+            content = @Content(mediaType = "application/json", schema = @Schema(anyOf = {
+                    AdditionSubtractionResult.class,
+                    MultiplicationResult.class,
+                    DivisionResult.class,
+                    RootResult.class,
+                    PowerResult.class })))
     @ApiResponse(
             responseCode = "404",
             content = @Content(mediaType = "application/json", schema = @Schema(implementation = Void.class)),
